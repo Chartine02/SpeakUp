@@ -1,8 +1,9 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Routes from "../../routes";
 import Button from "../Button";
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const navLinks = [
     { value: "Home", link: Routes.HOME },
     { value: "About us", link: Routes.HOME },
@@ -10,6 +11,8 @@ const Navbar = () => {
     { value: "Testimonials", link: Routes.HOME },
     { value: "Features", link: Routes.HOME },
   ];
+
+  const handleRegister = () => navigate(Routes.REGISTER)
 
   return (
     <nav className="bg-primary items-center flex justify-between px-20">
@@ -20,7 +23,7 @@ const Navbar = () => {
             <NavLink to={navLink.link}>{navLink.value}</NavLink>
           ))}
         </div>
-        <Button className="" small value={"Register"} />
+        <Button onClick={handleRegister} small value={"Register"} />
       </div>
     </nav>
   );

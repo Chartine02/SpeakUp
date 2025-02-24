@@ -1,12 +1,9 @@
+import { RouterProvider } from "react-router";
 import "./App.css";
-import Login from "./pages/Login";
+import router from "./routes/router";
 
 function App() {
-  return (
-    <div className="grid place-content-center min-h-screen">
-      <Login />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -4,4 +4,29 @@
   --color-primary: #4b015e;
   --color-secondary: #dfbbda;
   --color-tertiary: #bdbebe;
+  --color-vivid-purple: #dfbbda;
+}
+
+@layer utilities {
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s)
+      var(--animation-direction, forwards) linear infinite;
+  }
+}
+
+body {
+  color: white;
+}
+
+.landing-page {
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-vivid-purple)
+  );
 }

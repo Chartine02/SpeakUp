@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 const Layout = () => {
   return (
     <div>
-      <div className="">
+      <div className="text-black">
         {/* <Sidebar/> */}
         <Outlet/>
       </div>
