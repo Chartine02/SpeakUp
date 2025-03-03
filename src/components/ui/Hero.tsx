@@ -1,9 +1,8 @@
-"use client";
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "../../lib/utils";
 
-export const Hero = ({
+export const HeroText = ({
   words,
   className,
   filter = true,
@@ -51,9 +50,9 @@ export const Hero = ({
   };
 
   return (
-    <div className={cn("font-bold", className)}>
+    <div className={cn("font-medium", className)}>
       <div className="mt-4">
-        <div className=" dark:text-white text-black text-2xl leading-snug tracking-wide">
+        <div className="dark:text-white text-black leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>

@@ -4,9 +4,9 @@ import { Outlet } from "react-router";
 const Layout = () => {
   return (
     <div>
-      <div className="text-black">
+      <div className="text-black font-poppins">
         {/* <Sidebar/> */}
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   );

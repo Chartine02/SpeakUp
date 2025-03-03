@@ -1,9 +1,13 @@
 const About = () => {
   return (
-    <div className="grid grid-cols-2  px-16 text-center text-black items-center place-content-center">
+    <div className="grid grid-cols-2  px-20 py-16 text-black items-center place-content-center">
       <div className="space-y-5 justify-center">
-        <h1 className="text-5xl font-medium">Comprehensive Mental Health Care Solution</h1>
-        <h2 className="text-xl font-medium text-primary">We want you to feel better, faster!</h2>
+        <h1 className="text-5xl font-medium">
+          Comprehensive Mental Health Care Solution
+        </h1>
+        <h2 className="text-xl font-medium text-primary">
+          We want you to feel better, faster!
+        </h2>
         <p className="flex text-lg flex-col gap-5">
           We know that it can be hard to look past your worries and focus on
           what's important,but this is not just about getting through today-
@@ -19,7 +23,7 @@ const About = () => {
         </p>
       </div>
       <div className="justify-self-center">
-        <img src="demo.png" alt="" className="object-fill" />
+        <img src="speakup-mobile.svg" alt="" className="object-fill" />
       </div>
     </div>
   );

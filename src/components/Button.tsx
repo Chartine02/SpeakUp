@@ -1,23 +1,31 @@
 import clsx from "clsx";
-import { ComponentProps } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 
 interface ButtonProps extends ComponentProps<"button"> {
-  icon?: string;
   option?: boolean;
-  small?: boolean
+  small?: boolean;
 }
 
-const Button = ({ onClick, value, icon, option = false, small }: ButtonProps) => {
+const Button = ({
+  onClick,
+  value,
+  option = false,
+  small,
+  children,
+}: PropsWithChildren<ButtonProps>) => {
   return (
     <button
-      className={clsx("bg-secondary/60 text-white hover:cursor-pointer font-medium py-2 rounded-full", {
-        "bg-gray-300": option == true,
-        "w-1/2 rounded-xl px-3": small == true
-      })}
+      className={clsx(
+        "flex items-center w-full justify-center gap-1 py-3 px-4 bg-secondary/50 text-white hover:cursor-pointer font-medium rounded-full",
+        {
+          "bg-gray-300": option,
+          "w-1/2 rounded-xl bg-secondary/40": small,
+        }
+      )}
       onClick={onClick}
     >
       {value}
-      {icon}
+      {children}
     </button>
   );
 };
