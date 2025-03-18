@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import Footer from "../Footer";
 // import Sidebar from "./Sidebar";
 
 const Layout = () => {
@@ -7,7 +8,8 @@ const Layout = () => {
       <div className="text-black font-poppins">
         {/* <Sidebar/> */}
         <Outlet />
-      </div>
+        <Footer />
+      </div> 
     </div>
   );
 };

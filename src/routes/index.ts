@@ -5,6 +5,8 @@ const Routes = {
     ROOT: "/login",
     LANDING: "/landing",
   },
+  TESTIMONIES: "/testimonies",
+  CHAT: "/chat",
 };
 
 export default Routes;

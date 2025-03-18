@@ -1,3 +1,4 @@
+import Button from "../components/Button";
 import Navbar from "../components/layout/Navbar";
 import Title from "../components/Title";
 import { Blogs } from "../components/ui/Blogs";
@@ -13,7 +14,7 @@ const Landing = () => {
       <Navbar />
       <div className="space-y-5">
         <section className="landing-page grid px-20  grid-cols-2 items-center py-20 ">
-          <div>
+          <div className="space-y-6">
             <HeroText
               className="px-8 font-bold text-6xl "
               words="Welcome to SpeakUp app!"
@@ -22,9 +23,10 @@ const Landing = () => {
               className="px-8 text-xl"
               words="We're so excited to have you as part of our community."
             />
+            <Button value='Join us' small />
           </div>
           <div className="justify-self-center">
-            <img src="hero.svg" alt="" width={700} />
+            <img src="hero-group.svg" alt="" width={700} />
           </div>
         </section>
         <About />
@@ -36,7 +38,7 @@ const Landing = () => {
           </div>
         </section>
         <Testimonials
-          className=""
+          className="pb-4"
           items={testimonies}
           direction="left"
           speed="slow"
