@@ -6,6 +6,8 @@ import Register from "../pages/auth/Register";
 import Landing from "../pages/Landing";
 import Testimonies from "../pages/Testimonies";
 import Chat from "../pages/Chat";
+import AdminDashboard from "../pages/AdminDashboard";
+import Professionals from "../pages/Professionals";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,8 @@ const router = createBrowserRouter([
       { path: Routes.LOGIN.LANDING, element: <Landing /> },
       { path: Routes.TESTIMONIES, element: <Testimonies /> },
       { path: Routes.CHAT, element: <Chat /> },
+      { path: Routes.ADMIN, element: <AdminDashboard /> },
+      { path: Routes.PROFESSIONALS, element: <Professionals /> },
     ],
   },
 ]);

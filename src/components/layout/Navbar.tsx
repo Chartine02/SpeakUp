@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import Routes from "../../routes";
 import Button from "../Button";
 
@@ -8,8 +8,8 @@ const Navbar = () => {
     { value: "Home", link: Routes.HOME },
     { value: "About us", link: Routes.HOME },
     { value: "Blogs", link: Routes.HOME },
-    { value: "Testimonials", link: Routes.HOME },
-    { value: "Features", link: Routes.HOME },
+    { value: "Testimonials", link: Routes.TESTIMONIES },
+    { value: "Chat", link: Routes.CHAT },
   ];
 
   const handleRegister = () => navigate(Routes.REGISTER)

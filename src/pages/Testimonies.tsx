@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import { cn } from "../lib/utils";
 
 interface Testimony {
   id: string;
@@ -56,7 +55,7 @@ const Testimonies = () => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 md:px-20">
+    <div className="min-h-screen text-white py-8 px-4 md:px-20">
       <Title text="Share Your Journey" />
       
       <div className="max-w-3xl mx-auto my-8 p-6 rounded-lg shadow-md" 

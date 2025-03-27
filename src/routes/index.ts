@@ -7,6 +7,8 @@ const Routes = {
   },
   TESTIMONIES: "/testimonies",
   CHAT: "/chat",
+  ADMIN: "/admin",
+  PROFESSIONALS: "/professionals",
 };
 
 export default Routes;

@@ -1,5 +1,4 @@
 import Button from "../components/Button";
-import Navbar from "../components/layout/Navbar";
 import Title from "../components/Title";
 import { Blogs } from "../components/ui/Blogs";
 import { HeroText } from "../components/ui/Hero";
@@ -11,7 +10,6 @@ import About from "./About";
 const Landing = () => {
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
       <div className="space-y-5">
         <section className="landing-page grid px-20  grid-cols-2 items-center py-20 ">
           <div className="space-y-6">

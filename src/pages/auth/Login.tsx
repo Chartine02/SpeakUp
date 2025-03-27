@@ -16,7 +16,11 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const handleLogin = (data: LoginFormData) => console.log(data);
+  const handleLogin = (data: LoginFormData) => {
+    console.log(data);
+    sessionStorage.setItem("isLoggedIn", "true");
+    navigate(Routes.TESTIMONIES);
+  };
 
   const handleNavigationToCreateAccount = () => navigate(Routes.REGISTER);
 
