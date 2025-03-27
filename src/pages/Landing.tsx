@@ -50,7 +50,7 @@ const Landing = () => {
 
   return (
     <div className="overflow-x-hidden">
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <div className="flex justify-end gap-4 px-20 py-4 bg-gray-100">
           {isAdmin && (
             <Button 
@@ -66,7 +66,7 @@ const Landing = () => {
             small
           />
         </div>
-      )}
+      )} */}
       
       <div className="space-y-5">
         <section className="landing-page grid px-20  grid-cols-2 items-center py-20 ">
