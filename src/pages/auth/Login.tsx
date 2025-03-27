@@ -54,10 +54,6 @@ const Login = () => {
       <h3 className="tex-lg font-medium">Welcome Back!</h3>
       <h1 className="text-2xl font-bold">Please, Log In</h1>
       
-      {loginError && (
-        <p className="text-red-400 font-medium text-sm">{loginError}</p>
-      )}
-      
       <form onSubmit={handleSubmit(handleLogin)} className="space-y-3">
         <Input
           placeholder="johndoe@gmail.com"
@@ -76,6 +72,9 @@ const Login = () => {
         >
           <FaLockOpen />
         </Input>
+        {loginError && (
+        <p className="text-red-400 font-medium text-sm">{loginError}</p>
+      )}
         <Button value="Login" type="submit" />
       </form>
       <div className="flex justify-center">
