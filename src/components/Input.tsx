@@ -28,13 +28,13 @@ const Input = ({
 
   return (
     <div className="text-start">
-      <div className="bg-white focus:outline-none gap-4 text-gray-600 placeholder:text-gray-300 py-2 flex px-3 items-center rounded-full">
+      <div className="bg-white focus:outline-none gap-4 text-gray-600 placeholder:text-gray-300 py-2 flex px-3 items-center rounded-xl">
         {children}
         <input
           {...register}
           {...delegatedProperties}
           type={isPasswordInput ? (showPassword ? "text" : "password") : delegatedProperties.type}
-          className="focus:outline-none flex-1"
+          className="focus:outline-none w-2/4 flex-1"
         />
         {isPasswordInput && <PasswordToggle />}
       </div>

@@ -51,12 +51,12 @@ const Register = () => {
 
   return (
     <Wrapper>
-      <img src="reg.svg" alt="" />
       <div>
         <h3 className=" tex-lg font-medium">Hey there!</h3>
         <h1 className="text-2xl font-bold"> Let's get started</h1>
       </div>
       <form action="" onSubmit={handleSubmit(onRegister)} className="space-y-3">
+        {/* <label htmlFor="name" className="self-start">Name</label> */}
         <Input
           placeholder="Names"
           register={register("name")}

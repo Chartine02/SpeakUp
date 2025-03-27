@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import Routes from "../../routes";
-import Button from "../Button";
+import Button from "../components/Button";
+import Routes from "../routes";
 
 const Navbar = () => {
   const navigate = useNavigate()
