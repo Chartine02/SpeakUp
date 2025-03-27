@@ -23,8 +23,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Landing /> },
-      // { path: Routes.REGISTER, element: <Register /> },
-      // { path: Routes.LOGIN.ROOT, element: <Login /> },
       { path: Routes.LOGIN.LANDING, element: <Landing /> },
       { path: Routes.TESTIMONIES, element: <Testimonies /> },
       { path: Routes.CHAT, element: <Chat /> },
