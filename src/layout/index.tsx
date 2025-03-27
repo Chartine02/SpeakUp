@@ -1,12 +1,8 @@
-// import { ReactNode } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Footer from "./Footer";
 import Routes from '../routes';
 import Navbar from './Navbar';
 
-// interface LayoutProps {
-//   children: ReactNode;
-// }
 
 const Layout = () => {
   const location = useLocation();
@@ -20,7 +16,6 @@ const Layout = () => {
       {!isAuthPage && <Navbar />}
       <main className="flex-grow pt-16">
         <Outlet/>
-        {/* {children} */}
       </main>
       {!isAuthPage && <Footer />}
     </div>

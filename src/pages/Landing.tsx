@@ -8,16 +8,66 @@ import { testimonies } from "../data/testimonies";
 import About from "./About";
 import { useNavigate } from "react-router-dom";
 import Routes from "../routes";
+import { useEffect, useState } from "react";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  
+  useEffect(() => {
+
+    const checkAuth = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setIsLoggedIn(true);
+        
+        const userRole = localStorage.getItem('userRole');
+        if (userRole === 'admin') {
+          setIsAdmin(true);
+        }
+      }
+    };
+    
+    checkAuth();
+  }, []);
 
   const handleBookSession = () => {
-    navigate(Routes.PROFESSIONALS); // Make sure this route exists in your Routes file
+    navigate(Routes.PROFESSIONALS);
+  };
+  
+  const handleAdminDashboard = () => {
+    navigate(Routes.ADMIN);
+  };
+  
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    navigate(Routes.HOME);
   };
 
   return (
     <div className="overflow-x-hidden">
+      {isLoggedIn && (
+        <div className="flex justify-end gap-4 px-20 py-4 bg-gray-100">
+          {isAdmin && (
+            <Button 
+              value="Admin Dashboard" 
+              onClick={handleAdminDashboard}
+              small
+            />
+          )}
+          <Button 
+            value="Logout" 
+            onClick={handleLogout}
+            option={true}
+            small
+          />
+        </div>
+      )}
+      
       <div className="space-y-5">
         <section className="landing-page grid px-20  grid-cols-2 items-center py-20 ">
           <div className="space-y-6">
