@@ -18,7 +18,7 @@ interface TimeSlot {
 }
 
 const Professionals = () => {
-  const [professionals, setProfessionals] = useState<Professional[]>([
+  const [professionals] = useState<Professional[]>([
     {
       id: "1",
       name: "Dr. Maya Johnson",
@@ -56,7 +56,6 @@ const Professionals = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Generate next 14 days for booking
   const generateAvailableDates = () => {
     const dates = [];
     const today = new Date();
@@ -65,7 +64,6 @@ const Professionals = () => {
       const date = new Date();
       date.setDate(today.getDate() + i);
       
-      // Only include days that the professional is available
       const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
       if (selectedProfessional && selectedProfessional.availableDays.includes(dayName)) {
         dates.push({
@@ -78,15 +76,13 @@ const Professionals = () => {
     return dates;
   };
 
-  // Generate time slots
   const generateTimeSlots = (): TimeSlot[] => {
     const slots = [];
-    const startHour = 9; // 9 AM
-    const endHour = 17; // 5 PM
+    const startHour = 9;
+    const endHour = 17;
     
     for (let hour = startHour; hour <= endHour; hour++) {
-      for (let minutes of ['00', '30']) {
-        // Randomly mark some slots as unavailable
+      for (const minutes of ['00', '30']) {
         const available = Math.random() > 0.3;
         slots.push({
           time: `${hour}:${minutes}`,
@@ -104,15 +100,12 @@ const Professionals = () => {
       return;
     }
     
-    // Here you would normally make an API call to save the appointment
     setSuccessMessage(`Your appointment with ${selectedProfessional?.name} on ${selectedDate} at ${selectedTime} has been scheduled.`);
     
-    // Reset form
     setSelectedDate("");
     setSelectedTime("");
     setAppointmentReason("");
     
-    // Close modal after success
     setTimeout(() => {
       setIsModalOpen(false);
       setSuccessMessage("");
@@ -194,7 +187,6 @@ const Professionals = () => {
         ))}
       </div>
       
-      {/* Booking Modal */}
       {isModalOpen && selectedProfessional && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg w-full max-w-2xl shadow-xl overflow-hidden">
