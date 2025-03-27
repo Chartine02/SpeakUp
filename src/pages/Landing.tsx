@@ -6,8 +6,16 @@ import { Testimonials } from "../components/ui/Testimonials";
 import { slides } from "../data/blogs";
 import { testimonies } from "../data/testimonies";
 import About from "./About";
+import { useNavigate } from "react-router-dom";
+import Routes from "../routes";
 
 const Landing = () => {
+  const navigate = useNavigate();
+
+  const handleBookSession = () => {
+    navigate(Routes.PROFESSIONALS); // Make sure this route exists in your Routes file
+  };
+
   return (
     <div className="overflow-x-hidden">
       <div className="space-y-5">
@@ -21,7 +29,7 @@ const Landing = () => {
               className="px-8 text-xl"
               words="We're so excited to have you as part of our community."
             />
-            <Button value='Join us' small />
+            <Button value="Join us" small />
           </div>
           <div className="justify-self-center">
             <img src="hero-group.svg" alt="" width={700} />
@@ -41,6 +49,18 @@ const Landing = () => {
           direction="left"
           speed="slow"
         />
+        <section className="bg-primary my-12 mx-60 rounded-md py-16 px-20 text-center">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h2 className="text-3xl font-bold text-secondary">
+              Ready to take the next step?
+            </h2>
+            <p className="text-xl">
+              Connect with our professional counselors and start your journey
+              toward better mental health today.
+            </p>
+            <Button value="Book a Session" onClick={handleBookSession} />
+          </div>
+        </section>
       </div>
     </div>
   );

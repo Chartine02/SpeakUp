@@ -16,10 +16,10 @@ const Button = ({
   return (
     <button
       className={clsx(
-        "flex items-center w-full justify-center gap-1 py-3 px-4 bg-secondary/50 text-white hover:cursor-pointer font-medium rounded-full",
+        "flex items-center justify-center gap-1 py-3 px-12 bg-secondary/50 text-white hover:cursor-pointer font-medium rounded-full mx-auto",
         {
           "bg-gray-300": option,
-          "w-1/2 rounded-xl bg-secondary/40": small,
+          "w-1/3 rounded-xl bg-secondary/40": small,
         }
       )}
       onClick={onClick}

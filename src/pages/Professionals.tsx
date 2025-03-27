@@ -24,7 +24,7 @@ const Professionals = () => {
       name: "Dr. Maya Johnson",
       specialty: "Anxiety & Depression",
       bio: "Licensed therapist with 10 years of experience in cognitive behavioral therapy approaches. Specializes in helping individuals manage anxiety and depression.",
-      imageUrl: "https://randomuser.me/api/portraits/women/44.jpg",
+      imageUrl: "woman-1.jpg",
       availableDays: ["Monday", "Wednesday", "Friday"],
       rating: 4.8,
     },
@@ -33,7 +33,7 @@ const Professionals = () => {
       name: "Dr. Robert Chen",
       specialty: "Trauma Recovery",
       bio: "Specializing in trauma-informed therapy approaches. Helping individuals process and heal from past traumas through evidence-based techniques.",
-      imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
+      imageUrl: "doctor-1.jpg",
       availableDays: ["Tuesday", "Thursday"],
       rating: 4.9,
     },
@@ -42,7 +42,7 @@ const Professionals = () => {
       name: "Sarah Martinez, LMFT",
       specialty: "Relationships & Family Therapy",
       bio: "Licensed Marriage and Family Therapist with experience in resolving relationship conflicts and improving family dynamics.",
-      imageUrl: "https://randomuser.me/api/portraits/women/68.jpg",
+      imageUrl: "woman-2.jpg",
       availableDays: ["Monday", "Tuesday", "Thursday"],
       rating: 4.7,
     },
@@ -143,7 +143,7 @@ const Professionals = () => {
               <img 
                 src={professional.imageUrl} 
                 alt={professional.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full"
               />
             </div>
             <div className="p-6">

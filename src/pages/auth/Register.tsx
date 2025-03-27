@@ -53,7 +53,7 @@ const Register = () => {
   };
 
   const handleNavigatioToLogin = () => {
-    navigate(Routes.LOGIN.LANDING);
+    navigate(Routes.LOGIN.ROOT);
   };
 
   return (
