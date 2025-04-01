@@ -8,6 +8,7 @@ import Chat from "../pages/Chat";
 import AdminDashboard from "../pages/AdminDashboard";
 import Professionals from "../pages/Professionals";
 import Layout from "../layout";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: Routes.CHAT, element: <Chat /> },
       { path: Routes.ADMIN, element: <AdminDashboard /> },
       { path: Routes.PROFESSIONALS, element: <Professionals /> },
+      { path: Routes.ABOUT, element: <About /> },
     ],
   },
 ]);

@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4b015e;
-  --color-secondary: #dfbbda;
-  --color-tertiary: #bdbebe;
-  --color-vivid-purple: #dfbbda;
+  --color-primary: #5c0080;
+  --color-secondary: #e9c6e4;
+  --color-tertiary: #a0a0a0;
+  --color-vivid-purple: #9639b5;
 
   --font-poppins: "Poppins", sans-serif;
 }

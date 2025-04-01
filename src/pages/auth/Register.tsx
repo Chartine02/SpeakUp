@@ -16,6 +16,7 @@ import { useState } from "react";
 const Register = () => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const {
     register,
@@ -25,14 +26,10 @@ const Register = () => {
 
   const onRegister = async (data: RegiserFormData) => {
     try {
-      setSuccess(true);
-      
-      setTimeout(() => {
-        navigate(Routes.LOGIN.ROOT);
-      }, 2000);
-
-      const response = await axios.post<RegiserFormData>(
-        "https://speak-up-backend.onrender.com/auth/signup",
+      setError(null);
+      console.log(data)
+      const response = await axios.post(
+        "https://speak-up-backend.onrender.com/auth/signup", 
         data,
         {
           headers: {
@@ -40,15 +37,21 @@ const Register = () => {
           },
         }
       );
-
       console.log(response.data);
+      setSuccess(true);
       
+      setTimeout(() => {
+        navigate(Routes.LOGIN.ROOT);
+      }, 2000);
       
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error(error.response?.data);
+        const errorMessage = error.response?.data?.message || 
+                             "Registration failed. Please try again.";
+        setError(errorMessage);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
       }
-      console.log("An unexpected error occurred", error);
     }
   };
 
@@ -69,6 +72,14 @@ const Register = () => {
             <h3 className="tex-lg font-medium">Hey there!</h3>
             <h1 className="text-2xl font-bold">Let's get started</h1>
           </div>
+          
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+              <strong className="font-bold">Error!</strong>
+              <span className="block sm:inline"> {error}</span>
+            </div>
+          )}
+          
           <form action="" onSubmit={handleSubmit(onRegister)} className="space-y-3">
             <Input
               placeholder="Names"

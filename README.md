@@ -59,7 +59,7 @@ Before you begin, ensure you have the following installed:
    ```bash
    npm run dev
    # or
-   yarn start
+   yarn dev
    ```
 
 2. Open your browser and navigate to:

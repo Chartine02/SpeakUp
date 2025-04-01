@@ -9,6 +9,7 @@ const Routes = {
   CHAT: "/chat",
   ADMIN: "/admin",
   PROFESSIONALS: "/professionals",
+  ABOUT: "/about",
 };
 
 export default Routes;

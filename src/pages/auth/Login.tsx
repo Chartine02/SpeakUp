@@ -8,44 +8,62 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormData, loginSchema } from "../../schema";
 import { MdEmail } from "react-icons/md";
 import { FaLockOpen } from "react-icons/fa6";
-import { users } from "../../data/users";
+// import { users } from "../../data/users";
 import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState<string | null>(null);
 
+  // const user= async() => {
+  //   const response = await axios.get("https://speak-up-backend.onrender.com/user")
+  //   console.log(response.data)
+  // }
+  // user()
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
+  
+  const handleLogin = async () =>{
+    console.log("logging in")
+    const response = await axios.post("https://speak-up-backend.onrender.com/auth/signin", {
+      email: "admin@gmail.com",
+      password: 12345678
+    })
+    localStorage.setItem("token", response.data.token)
+    console.log(response.data)
+  }
+  handleLogin()
 
-  const handleLogin = (data: LoginFormData) => {
-    setLoginError(null);
+  // const handleLogin = (data: LoginFormData) => {
+  //   setLoginError(null);
     
-    const user = users.find(
-      (user) => user.email === data.email && user.password === data.password
-    );
+  //   const user = users.find(
+  //     (user) => user.email === data.email && user.password === data.password
+  //   );
     
-    if (user) {
-      const token = Math.random().toString(36).substring(2) + Date.now().toString(36);
+  //   if (user) {
+  //     const token = Math.random().toString(36).substring(2) + Date.now().toString(36);
       
-      localStorage.setItem("token", token);
-      localStorage.setItem("userRole", user.role);
-      localStorage.setItem("userName", user.username );
-      localStorage.setItem("userId", user.id.toString());
-      localStorage.setItem("isLoggedIn", "true");
+  //     localStorage.setItem("token", token);
+  //     localStorage.setItem("userRole", user.role);
+  //     localStorage.setItem("userName", user.username );
+  //     localStorage.setItem("userId", user.id.toString());
+  //     localStorage.setItem("isLoggedIn", "true");
       
-      if (user.role === "ADMIN") {
-        navigate(Routes.ADMIN);
-      } else {
-        navigate(Routes.TESTIMONIES);
-      }
-    } else {
-      setLoginError("Invalid email or password");
-    }
-  };
+  //     if (user.role === "ADMIN") {
+  //       navigate(Routes.ADMIN);
+  //     } else {
+  //       navigate(Routes.TESTIMONIES);
+  //     }
+  //   } else {
+  //     setLoginError("Invalid email or password");
+  //   }
+  // };
 
   const handleNavigationToCreateAccount = () => navigate(Routes.REGISTER);
 

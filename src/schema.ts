@@ -1,7 +1,7 @@
 import { z } from "zod";
-import libphonenumber from "google-libphonenumber";
+// import libphonenumber from "google-libphonenumber";
 
-const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
+// const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
 
 export const registerSchema = z.object({
   name: z
@@ -15,14 +15,14 @@ export const registerSchema = z.object({
   phoneNumber: z
     .string()
     .nonempty({ message: "Phone number is required" })
-    .refine((number) => {
-      try {
-        const phoneNumber = phoneUtil.parse(number);
-        return phoneUtil.isValidNumber(phoneNumber);
-      } catch {
-        return false;
-      }
-    }),
+    // .refine((number) => {
+    //   try {
+    //     const phoneNumber = phoneUtil.parse(number);
+    //     return phoneUtil.isValidNumber(phoneNumber);
+    //   } catch {
+    //     return false;
+    //   }
+    // }),
 });
 
 export const loginSchema = registerSchema.pick({ email: true, password: true });

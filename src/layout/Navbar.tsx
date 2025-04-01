@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const navLinks = [
     { value: "Home", link: Routes.HOME },
-    { value: "About us", link: Routes.HOME },
+    { value: "About us", link: Routes.ABOUT },
     { value: "Articles", link: Routes.HOME },
     { value: "Testimonials", link: Routes.TESTIMONIES },
     { value: "Chat", link: Routes.CHAT },
