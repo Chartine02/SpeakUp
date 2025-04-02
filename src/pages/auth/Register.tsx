@@ -16,6 +16,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
@@ -33,10 +34,12 @@ const Register = () => {
   const onRegister = async (data: RegiserFormData) => {
     try {
       setError(null);
+      setIsSubmitting(true);
       const formattedData = formatRegistrationData(data);
       
       const response = await fetch("https://speak-up-backend.onrender.com/auth/signup", {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -55,6 +58,8 @@ const Register = () => {
       
     } catch (error) {
       setError(error instanceof Error ? error.message : "An unexpected error occurred");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -120,7 +125,12 @@ const Register = () => {
             {field.icon}
           </Input>
         ))}
-        <Button className="w-full" value="Register" type="submit">
+        <Button 
+          className="w-full" 
+          value={isSubmitting ? "Creating account..." : "Register"} 
+          type="submit"
+          disabled={isSubmitting}
+        >
           <FaAngleRight />
         </Button>
       </form>

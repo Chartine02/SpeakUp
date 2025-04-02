@@ -16,7 +16,8 @@ const Login = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { setUser, setIsLoading } = useUser();
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const {
     register,
     handleSubmit,
@@ -32,6 +33,7 @@ const Login = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(`https://speak-up-backend.onrender.com/user/${userId}`, {
+        credentials: 'include',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json'
@@ -54,11 +56,13 @@ const Login = () => {
   const onLogin = async (data: LoginFormData) => {
     try {
       setError(null);
+      setIsSubmitting(true);
       setIsLoading(true);
       const formattedData = formatLoginData(data);
       
       const response = await fetch("https://speak-up-backend.onrender.com/auth/signin", {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -90,6 +94,7 @@ const Login = () => {
     } catch (error) {
       setError(error instanceof Error ? error.message : "An unexpected error occurred");
     } finally {
+      setIsSubmitting(false);
       setIsLoading(false);
     }
   };
@@ -142,19 +147,24 @@ const Login = () => {
             {field.icon}
           </Input>
         ))}
-        <Button className="w-full" value="Login" type="submit" />
+        <Button 
+          className="w-full" 
+          value={isSubmitting ? "Logging in..." : "Login"} 
+          type="submit"
+          disabled={isSubmitting}
+        />
       </form>
 
       <div className="flex gap-2 justify-center items-center">
         <span className="h-0.5 w-1/2 bg-white"></span>
-        <p>or</p>
+          <p>or</p>
         <span className="h-0.5 w-1/2 bg-white"></span>
       </div>
 
-      <Button 
+      <Button
         onClick={() => navigate(Routes.REGISTER)} 
-        value="Create an account" 
-        option={true} 
+        value="Create an account"
+        option={true}
       />
     </Wrapper>
   );
