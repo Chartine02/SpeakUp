@@ -11,12 +11,18 @@ import Routes from "../routes";
 import { motion } from "framer-motion";
 import { faqs, stats, procedures } from "../data/faq";
 import { services } from "../data/services";
+import { useUser } from '../context/UserContext';
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { user } = useUser();
   
   const handleBookSession = () => {
-    navigate(Routes.PROFESSIONALS);
+    if (user) {
+      navigate(Routes.PROFESSIONALS);
+    } else {
+      navigate(Routes.LOGIN.ROOT);
+    }
   };
 
   const handleJoin = () => {
@@ -179,7 +185,10 @@ const Landing = () => {
               toward better mental health today.
             </p>
             <div className="flex flex-col items-center gap-4">
-              <Button value="Book a Session" onClick={handleBookSession} />
+              <Button 
+                value="Book a Session" 
+                onClick={handleBookSession}
+              />
               <div className="flex items-center justify-center gap-2 mt-4">
                 <div className="flex -space-x-2">
                   {[1, 2, 3, 4].map(i => (
