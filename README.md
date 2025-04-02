@@ -47,12 +47,6 @@ Before you begin, ensure you have the following installed:
    yarn install
    ```
 
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   ```
-   Then edit the `.env` file with your configuration settings.
-
 ### Running Locally
 
 1. Start the development server:
