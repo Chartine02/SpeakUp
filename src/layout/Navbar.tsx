@@ -7,7 +7,7 @@ const Navbar = () => {
   const navLinks = [
     { value: "Home", link: Routes.HOME },
     { value: "About us", link: Routes.ABOUT },
-    { value: "Articles", link: Routes.HOME },
+    { value: "Articles", link: Routes.ARTICLES },
     { value: "Testimonials", link: Routes.TESTIMONIES },
     { value: "Chat", link: Routes.CHAT },
   ];
@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         <div className="flex whitespace-nowrap gap-4 text-white">
           {navLinks.map((navLink) => (
-            <NavLink to={navLink.link}>{navLink.value}</NavLink>
+            <NavLink key={navLink.value} to={navLink.link}>{navLink.value}</NavLink>
           ))}
         </div>
         <Button onClick={handleRegister} small value={"Register"} />
