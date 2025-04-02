@@ -27,10 +27,10 @@ export const faqs = [
 ];
 
 export const stats = [
-  { number: "5,000+", label: "Users Helped" },
-  { number: "100+", label: "Professional Counselors" },
-  { number: "1,200+", label: "Success Stories" },
-  { number: "4.9/5", label: "Average Rating" },
+  { number: "5+", label: "Users Helped" },
+  { number: "1+", label: "Professional Counselors" },
+  { number: "2+", label: "Success Stories" },
+  { number: "4.7/5", label: "Average Rating" },
 ];
 
 export const procedures = [

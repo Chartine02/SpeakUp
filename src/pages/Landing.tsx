@@ -18,6 +18,10 @@ const Landing = () => {
   const handleBookSession = () => {
     navigate(Routes.PROFESSIONALS);
   };
+
+  const handleJoin = () => {
+    navigate(Routes.REGISTER);
+  };
   
   return (
     <div className="overflow-x-hidden">
@@ -58,8 +62,7 @@ const Landing = () => {
               transition={{ duration: 0.7, delay: 0.6 }}
               className="px-8 flex gap-4"
             >
-              <Button value="Join us" small />
-              <Button value="Learn More" small onClick={() => navigate(Routes.ABOUT)} />
+              <Button value="Join us" small onClick={handleJoin} />
             </motion.div>
           </div>
           <motion.div 

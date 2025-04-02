@@ -207,13 +207,13 @@ const Professionals = () => {
                   <div>
                     <label className="block text-gray-700 mb-2">Select a Date</label>
                     <select 
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-gray-300 text-black rounded-lg"
                       value={selectedDate}
                       onChange={(e) => setSelectedDate(e.target.value)}
                     >
                       <option value="">Select a date</option>
                       {generateAvailableDates().map((date) => (
-                        <option key={date.value} value={date.value}>
+                        <option className="text-black" key={date.value} value={date.value}>
                           {date.label}
                         </option>
                       ))}
