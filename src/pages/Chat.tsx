@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
+import { useUser } from '../context/UserContext';
 
 interface Message {
   id: string;
@@ -17,6 +18,7 @@ interface ChatRoom {
 }
 
 const Chat = () => {
+  const { user } = useUser();
   const [chatRooms, setChatRooms] = useState<ChatRoom[]>([
     {
       id: "general",
@@ -67,7 +69,6 @@ const Chat = () => {
 
   const [activeRoomId, setActiveRoomId] = useState("general");
   const [newMessage, setNewMessage] = useState("");
-  const [username, setUsername] = useState("Guest" + Math.floor(Math.random() * 1000));
   
   const messageEndRef = useRef<HTMLDivElement>(null);
   
@@ -87,7 +88,7 @@ const Chat = () => {
     const message: Message = {
       id: Date.now().toString(),
       text: newMessage,
-      sender: username,
+      sender: user?.username || "",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
     
@@ -112,7 +113,6 @@ const Chat = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
-        {/* Chat Rooms Sidebar */}
         <div className="md:col-span-1 space-y-4">
           <div className="bg-white/10 rounded-lg p-4 shadow-md" style={{
             background: "linear-gradient(to bottom, var(--color-primary), #2a0134)",
@@ -120,16 +120,17 @@ const Chat = () => {
             <h3 className="text-xl font-medium mb-4 text-white">Your Profile</h3>
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center">
-                {username.charAt(0).toUpperCase()}
+                {user?.username.charAt(0).toUpperCase()}
               </div>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="bg-white/10 border border-white/30 text-white rounded px-3 py-1 text-sm flex-1"
-                placeholder="Your display name"
-              />
+              <div className="bg-white/10 border border-white/30 text-white rounded px-3 py-1 text-sm flex-1">
+                {user?.username}
+              </div>
             </div>
+            {/* <div className="text-white/80 text-sm">
+              <p>Email: {user?.email}</p>
+              <p>Phone: {user?.phone_number}</p>
+              <p>Member since: {new Date(user?.created_at || '').toLocaleDateString()}</p>
+            </div> */}
           </div>
           
           <div className="bg-white/10 rounded-lg p-4 shadow-md" style={{
@@ -170,16 +171,16 @@ const Chat = () => {
             {activeRoom.messages.map(message => (
               <div 
                 key={message.id} 
-                className={`flex ${message.sender === username ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${message.sender === user?.username ? 'justify-end' : 'justify-start'}`}
               >
                 <div className={`max-w-[75%] rounded-lg p-3 ${
-                  message.sender === username 
+                  message.sender === user?.username 
                     ? 'bg-secondary/40 text-white' 
                     : 'bg-white/10 text-white'
                 }`}>
                   <div className="flex justify-between items-baseline mb-1">
                     <span className="font-medium text-sm">
-                      {message.sender === username ? 'You' : message.sender}
+                      {message.sender === user?.username ? 'You' : message.sender}
                     </span>
                     <span className="text-xs opacity-70 ml-2">{message.timestamp}</span>
                   </div>

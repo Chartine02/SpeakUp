@@ -7,7 +7,6 @@ const Articles = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categories = ["All", "Mental Health", "Self-Care", "Relationships", "Anxiety", "Depression"];
 
-  // Filter articles based on category
   const filteredArticles = selectedCategory === "All" 
     ? slides 
     : slides.filter(article => article.category === selectedCategory);
@@ -20,7 +19,6 @@ const Articles = () => {
           Explore our collection of articles written by mental health professionals and experts to help you on your wellness journey.
         </p>
 
-        {/* Category Filter */}
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
           {categories.map((category) => (
             <button
@@ -68,7 +66,6 @@ const Articles = () => {
           ))}
         </div>
 
-        {/* Load More Button */}
         <div className="text-center mt-12">
           <button className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors">
             Load More Articles

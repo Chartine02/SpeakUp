@@ -9,11 +9,13 @@ import Routes from "../../routes";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Wrapper from "./Wrapper";
+import { useUser } from '../../context/UserContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { setUser, setIsLoading } = useUser();
 
   const {
     register,
@@ -26,9 +28,33 @@ const Login = () => {
     password: data.password
   });
 
+  const fetchUserData = async (userId: number) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`https://speak-up-backend.onrender.com/user/${userId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+
+      const userData = await response.json();
+      setUser(userData);
+      return userData;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      throw error;
+    }
+  };
+
   const onLogin = async (data: LoginFormData) => {
     try {
       setError(null);
+      setIsLoading(true);
       const formattedData = formatLoginData(data);
       
       const response = await fetch("https://speak-up-backend.onrender.com/auth/signin", {
@@ -45,16 +71,26 @@ const Login = () => {
       if (!response.ok) {
         throw new Error(responseData.message || "Login failed");
       }
-      
+
       localStorage.setItem("token", responseData.token);
+      localStorage.setItem("userId", responseData.id);
+
+      const userData = await fetchUserData(responseData.id);
+      
       setSuccess(true);
       
       setTimeout(() => {
-        navigate(Routes.TESTIMONIES);
+        if (userData.role === "ADMIN") {
+          navigate(Routes.ADMIN);
+        } else {
+          navigate(Routes.TESTIMONIES);
+        }
       }, 1000);
       
     } catch (error) {
       setError(error instanceof Error ? error.message : "An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
